@@ -2,11 +2,10 @@ var currentDay = $("#currentDay");
 var scheduleArea = $(".schedule");
 var timeRow = $(".time-row");
 var currentDate = moment().format("dddd, MMMM Do");
-var currentHour = moment().format("h hh");
+var currentHour = moment().format("H");
 var toDoItems = [];
-var intervalCheck = setInterval(setUpRows, 1000);
-
 console.log(currentHour)
+
 // An array of objects
 function startSchedule() {
   timeRow.each(function () {
@@ -53,7 +52,6 @@ function setUpRows() {
     }
   });
 }
-setUpRows();
 
 function renderSchedule() {
   toDoItems = localStorage.getItem("todos");
