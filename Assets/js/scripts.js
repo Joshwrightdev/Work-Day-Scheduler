@@ -4,7 +4,6 @@ var timeRow = $(".time-row");
 var currentDate = moment().format("dddd, MMMM Do");
 var currentHour = moment().format("H");
 var toDoItems = [];
-console.log(currentHour)
 
 // An array of objects
 function startSchedule() {
@@ -79,6 +78,19 @@ $(document).ready(function () {
 
   //render schedule from local storage
   renderSchedule();
-  //when a todo item save button is clicked, save it
-  scheduleArea.on("click", "button", saveIt);
+  //".savBtn"when a todo item save button is clicked, save it
+  $(".saveBtn").on("click",function(){
+    var time = $(this).parent().attr("data-hour");
+    var userInput =$(this).siblings("textarea").val();
+    console.log(time)
+    console.log(userInput)  
+    localStorage.setItem(time, userInput);
+
+  }
+  );
+  for (let i= 9; i< 18; i++) {
+    $("#"+i).val(localStorage.getItem(i));
+    console.log(i)
+  }
+
 });
